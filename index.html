@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Stranger Things</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Stranger Things Intro - A Javascript Animation Experiment">
+	<meta name="author" content="Ryan Abraham">
+	<!-- <link rel="stylesheet" href="css/styles.css"> -->
+	<style>
+		* {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+		h1 {
+			font-size: 125rem;
+			margin: 0;
+			position: absolute;
+		}
+	</style>
+</head>
+
+<body>
+	<script src="js/anime.min.js"></script>
+	<script type="text/javascript">
+
+		function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, easing, transitionDuration, deleteAfter) {
+			var el = document.createElement('h1');
+			el.innerHTML = letter;
+			el.style.fontSize = fontSize;
+			el.style.marginLeft = offsetX;
+			el.style.marginTop = offsetY;
+
+			anime({
+				targets: el,
+				translateX: translateX,
+				translateY: translateY,
+				scale: scale,
+				rotate: rotate,
+				easing: easing,
+				duration: transitionDuration
+			});
+			document.body.appendChild(el);
+
+			setTimeout(function() {
+				el.remove();
+			}, deleteAfter);
+		}
+		// A - 0ms
+		createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 'easeOutQuad', 5000, 3000);
+		// N - 3000mx
+		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 'easeOutQuad', 5000, 3000)}, 3000);
+		// RA - 6000mx
+		setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 'easeOutQuad', 4000, 2000)}, 6000);
+		setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 'easeOutQuad', 4000, 2000)}, 6000);
+		// S - 8000mx
+		setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 'easeOutQuad', 5000, 3000)}, 8000);
+	</script>
+</body>
+</html>
