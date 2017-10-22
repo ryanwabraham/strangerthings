@@ -38,9 +38,12 @@
 </head>
 
 <body>
+	<audio id="music">
+		<source src="audio/theme.mp3" type="audio/mpeg">
+	</audio>
 	<script src="js/anime.min.js"></script>
 	<script type="text/javascript">
-
+		var music = document.getElementById('music');
 		function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, easing, transitionDuration, deleteAfter) {
 			var el = document.createElement('h1');
 			el.innerHTML = letter;
@@ -64,6 +67,8 @@
 				el.remove();
 			}, deleteAfter);
 		}
+
+		music.play();
 		//A - 3000ms
 		setTimeout(function() {createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 7500, 5000)}, 3000);
 		// N - 8000ms
