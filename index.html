@@ -26,7 +26,7 @@
 		}
 		h1 {
 			font-family: 'ITC Benguiat', serif;
-		    -webkit-text-stroke: 3rem #ca001d;
+		    -webkit-text-stroke: 2rem #ca001d;
 		    color: #141414;
 		    text-transform: uppercase;
 		    text-shadow: 0 0 18rem #ca001d;
@@ -41,7 +41,7 @@
 	<script src="js/anime.min.js"></script>
 	<script type="text/javascript">
 
-		function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, easing, transitionDuration, deleteAfter) {
+		function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, easing, transitionDuration, deleteAfter) {
 			var el = document.createElement('h1');
 			el.innerHTML = letter;
 			el.style.fontSize = fontSize;
@@ -54,6 +54,7 @@
 				translateY: translateY,
 				scale: scale,
 				rotate: rotate,
+				opacity: [startingOpacity, opacity],
 				easing: easing,
 				duration: transitionDuration
 			});
@@ -64,19 +65,24 @@
 			}, deleteAfter);
 		}
 		//A - 0ms
-		createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 'easeOutQuad', 5000, 3000);
+		createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 5000, 3000);
 		// N - 3000ms
-		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 'easeOutQuad', 5000, 3000)}, 3000);
+		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 5000, 3000)}, 3000);
 		// RA - 6000ms
-		setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 'easeOutQuad', 4000, 2000)}, 6000);
-		setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 'easeOutQuad', 4000, 2000)}, 6000);
+		setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 'easeOutQuad', 4000, 2000)}, 6000);
+		setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 'easeOutQuad', 4000, 2000)}, 6000);
 		// S - 8000ms
-		setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 'easeOutQuad', 5000, 3000)}, 8000);
+		setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 'easeOutQuad', 5000, 3000)}, 8000);
 		// G - 8000ms
-		setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -45, 'easeOutQuad', 5000, 3000)}, 8000);
+		setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -45, 1, 1, 'easeOutQuad', 5000, 3000)}, 8000);
 		//SR - 11000ms
-		setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 'easeOutQuad', 5000, 3000)}, 11000);
-		setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 'easeOutQuad', 5000, 3000)}, 11000);
+		setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 'easeOutQuad', 5000, 3000)}, 11000);
+		setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 'easeOutQuad', 5000, 3000)}, 11000);
+		//TART
+		setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 14000);
+		setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 14000);
+		setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 14000);
+		setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 14000);
 	</script>
 </body>
 </html>
