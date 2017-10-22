@@ -1,2 +1,2 @@
-# Stranger Things
-A Stranger Things inspired javascript animation experiment
+# Stranger Things Intro
+A javascript animation experiment.
