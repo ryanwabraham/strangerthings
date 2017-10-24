@@ -70,12 +70,12 @@
 
 		music.play();
 		//A - 3000ms
-		setTimeout(function() {createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 7500, 5000)}, 3000);
+		setTimeout(function() {createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
 		// N - 8000ms
-		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 8000);
+		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 3750, 2500)}, 8500);
 		// RI - 11000ms
-		setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
-		setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
+		setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 'easeOutQuad', 5000, 3000)}, 11000);
+		setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 'easeOutQuad', 5000, 3000)}, 11000);
 		// SG - 14000ms
 		setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
 		setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -35, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
@@ -90,6 +90,13 @@
 		//NG - 21000ms
 		setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
 		setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
+
+		//temp pause event
+		document.body.onkeyup = function(e){
+		    if(e.keyCode == 32){
+		        music.pause();
+		    }
+		}
 	</script>
 </body>
 </html>
