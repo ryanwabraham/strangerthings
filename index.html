@@ -38,33 +38,39 @@
 			position: relative;
 			display: inline-block;
 			vertical-align: top;
-			font-size: 25rem;
+			font-size: 10rem;
 			line-height: .90;
-			letter-spacing: -25px
+			letter-spacing: -10px
 		}
 		h2.dropcase {
-			font-size: 35rem;
-			margin-top: -30px;
+			font-size: 15rem;
+			margin-top: -15px;
 			margin-bottom: -120px;
 		}
 		section {
 			text-align: center;
 		}
 		section hr {
-			border: .25em solid #ca001d;
-			height: 34px;
+			border: .15em solid #ca001d;
+			height: 10px;
 			box-shadow: 0 0 25rem #ca001d;
+			transform-origin: center;
+		    transition-duration: .8s;
+		    transform: scaleX(0);
+		}
+		section hr.active {
+			transform: initial;
 		}
 		section hr.mini {
 			display: inline-block;
-			min-width: 15em;
-			margin-top: 6em;
+			min-width: 10em;
+			margin-top: 3.35em;
 		}
-		section hr.mini.left {
-			margin-right: 2em;
+		section hr#left {
+			margin-right: 1em;
 		}
-		section hr.mini.right {
-			margin-left: 2em;
+		section hr#right {
+			margin-left: 1em;
 		}
 	</style>
 </head>
@@ -74,25 +80,25 @@
 		<source src="audio/theme.mp3" type="audio/mpeg">
 	</audio>
 
-	<!-- <section>
-		<hr>
-		<h2 class="dropcase">S</h2>
-		<h2>T</h2>
-		<h2>R</h2>
-		<h2>A</h2>
-		<h2>N</h2>
-		<h2>G</h2>
-		<h2>E</h2>
-		<h2 class="dropcase">R</h2>
+	<!-- <section id="logo-wrapper">
+		<hr id="border-top">
+		<h2 id="s" class="dropcase">S</h2>
+		<h2 id="t">T</h2>
+		<h2 id="r">R</h2>
+		<h2 id="a">A</h2>
+		<h2 id="n">N</h2>
+		<h2 id="g">G</h2>
+		<h2 id="e">E</h2>
+		<h2 id="r2" class="dropcase">R</h2>
 		<br />
-		<hr class="mini left">
-		<h2>T</h2>
-		<h2>H</h2>
-		<h2>I</h2>
-		<h2>N</h2>
-		<h2>G</h2>
-		<h2>S</h2>
-		<hr class="mini right">
+		<hr id="left" class="mini">
+		<h2 id="t2">T</h2>
+		<h2 id="h">H</h2>
+		<h2 id="i">I</h2>
+		<h2 id="n2">N</h2>
+		<h2 id="g2">G</h2>
+		<h2 id="s2">S</h2>
+		<hr id="right" class="mini">
 	</section> -->
 
 	<script src="js/anime.min.js"></script>
@@ -122,6 +128,20 @@
 			}, deleteAfter);
 		}
 
+		function moveLetter(id, offsetX, offsetY, scaleFrom, startingOpacity, opacity, easing, transitionDuration) {
+			var el = document.getElementById(id);
+
+			anime({
+				targets: el,
+				translateX: [offsetX, 0],
+				translateY: [offsetY, 0],
+				scale: [scaleFrom, 1],
+				opacity: [startingOpacity, opacity],
+				easing: easing,
+				duration: transitionDuration
+			});
+		}
+
 		music.play();
 		//A - 3000ms
 		setTimeout(function() {createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
@@ -144,6 +164,33 @@
 		//NG - 21000ms
 		setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
 		setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
+
+		// moveLetter('logo-wrapper', 0, 0, 6, 1, 1, 'easeOutQuad', 15500);
+		// moveLetter('a', '-25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('n', '25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('g', '50%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('i', '-25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('g2', '25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('r', '-75%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('n2', 0, '100%', 1, 1, 1, 'easeOutQuad', 8000);
+		// moveLetter('t2', '-100%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('t', 0, '-100%', 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('h', 0, '100%', 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('s2', 0, '125%', 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('e', 0, '-125%', 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('s', '-300%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// moveLetter('r2', '300%', 0, 1, 1, 1, 'easeOutQuad', 10000);
+		// setTimeout(function() {
+		// 	var hr = document.getElementById('border-top');
+		// 	hr.className += 'active';
+
+		// 	setTimeout(function() {
+		// 		var hrLeft = document.getElementById('left');
+		// 		var hrRight = document.getElementById('right');
+		// 		hrLeft.className += ' active';
+		// 		hrRight.className += ' active';
+		// 	}, 800);
+		// }, 15500);
 
 		//temp pause event
 		document.body.onkeyup = function(e){
