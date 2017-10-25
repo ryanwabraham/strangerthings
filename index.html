@@ -49,6 +49,10 @@
 		}
 		section {
 			text-align: center;
+			transform: transale3d(0,0,0);
+		}
+		section.hidden {
+			display: none;
 		}
 		section hr {
 			border: .15em solid #ca001d;
@@ -80,7 +84,7 @@
 		<source src="audio/theme.mp3" type="audio/mpeg">
 	</audio>
 
-	<!-- <section id="logo-wrapper">
+	<section id="logo-wrapper" class="hidden">
 		<hr id="border-top">
 		<h2 id="s" class="dropcase">S</h2>
 		<h2 id="t">T</h2>
@@ -99,7 +103,7 @@
 		<h2 id="g2">G</h2>
 		<h2 id="s2">S</h2>
 		<hr id="right" class="mini">
-	</section> -->
+	</section>
 
 	<script src="js/anime.min.js"></script>
 	<script type="text/javascript">
@@ -128,14 +132,14 @@
 			}, deleteAfter);
 		}
 
-		function moveLetter(id, offsetX, offsetY, scaleFrom, startingOpacity, opacity, easing, transitionDuration) {
+		function moveLetter(id, offsetX, offsetY, scaleFrom, scaleTo, startingOpacity, opacity, easing, transitionDuration) {
 			var el = document.getElementById(id);
 
 			anime({
 				targets: el,
 				translateX: [offsetX, 0],
 				translateY: [offsetY, 0],
-				scale: [scaleFrom, 1],
+				scale: [scaleFrom, scaleTo],
 				opacity: [startingOpacity, opacity],
 				easing: easing,
 				duration: transitionDuration
@@ -144,7 +148,7 @@
 
 		music.play();
 		//A - 3000ms
-		setTimeout(function() {createLetter('A', '25%', 0, '450rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
+		setTimeout(function() {createLetter('A', '40%', '25%', '750rem', 0, 0, .70, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
 		// N - 8000ms
 		setTimeout(function() {createLetter('N', '-10%', 0, '175rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 3750, 2500)}, 8500);
 		// RI - 11000ms
@@ -154,50 +158,51 @@
 		setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
 		setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -35, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
 		//SR - 17000ms
-		setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 'easeOutQuad', 3000, 2000)}, 17000);
-		setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 'easeOutQuad', 3000, 2000)}, 17000);
+		setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 'easeOutQuad', 2850, 1900)}, 17000);
+		setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 'easeOutQuad', 2850, 1900)}, 17000);
 		//TART - 19000ms
-		setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19000);
-		setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19000);
-		setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19000);
-		setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19000);
+		setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 18900);
+		setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 18900);
+		setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 18900);
+		setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 18900);
 		//NG - 21000ms
 		setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
 		setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 'easeOutQuad', 6760, 4500)}, 21000);
+		//All letters - 25500ms
+		setTimeout(function() {
+			var logoWrapper = document.getElementById('logo-wrapper');
+			logoWrapper.className = '';
+			moveLetter('logo-wrapper', 0, 0, 6, .5, 1, 1, 'linear', 217000);
+			moveLetter('a', '-25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('n', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('g', '50%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('i', '-25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('g2', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('r', '-75%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('n2', 0, '100%', 1, 1, 1, 1, 'easeOutQuad', 8000);
+			moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('t', 0, '-150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('h', 0, '200%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('s2', 0, '150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('e', 0, '-125%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('s', '-300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			moveLetter('r2', '300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			//Show hrs
+			setTimeout(function() {
+				var hr = document.getElementById('border-top');
+				hr.className += 'active';
 
-		// moveLetter('logo-wrapper', 0, 0, 6, 1, 1, 'easeOutQuad', 15500);
-		// moveLetter('a', '-25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('n', '25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('g', '50%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('i', '-25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('g2', '25%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('r', '-75%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('n2', 0, '100%', 1, 1, 1, 'easeOutQuad', 8000);
-		// moveLetter('t2', '-100%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('t', 0, '-100%', 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('h', 0, '100%', 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('s2', 0, '125%', 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('e', 0, '-125%', 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('s', '-300%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// moveLetter('r2', '300%', 0, 1, 1, 1, 'easeOutQuad', 10000);
-		// setTimeout(function() {
-		// 	var hr = document.getElementById('border-top');
-		// 	hr.className += 'active';
+				setTimeout(function() {
+					var hrLeft = document.getElementById('left');
+					var hrRight = document.getElementById('right');
+					hrLeft.className += ' active';
+					hrRight.className += ' active';
+				}, 800);
+			}, 14000);
+		}, 25500);
+		//Fade out - 40300
+		setTimeout(function() {moveLetter('logo-wrapper', 0, 0, .5, .25, 1, 0, 'linear', 7700)}, 40300);
 
-		// 	setTimeout(function() {
-		// 		var hrLeft = document.getElementById('left');
-		// 		var hrRight = document.getElementById('right');
-		// 		hrLeft.className += ' active';
-		// 		hrRight.className += ' active';
-		// 	}, 800);
-		// }, 15500);
-
-		//temp pause event
-		document.body.onkeyup = function(e){
-		    if(e.keyCode == 32){
-		        music.pause();
-		    }
-		}
 	</script>
 </body>
 </html>
