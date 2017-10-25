@@ -24,7 +24,7 @@
 			justify-content: center;
 			overflow: hidden;
 		}
-		h1 {
+		h1, h2 {
 			font-family: 'ITC Benguiat', serif;
 		    -webkit-text-stroke: .015em #ca001d;
 		    color: #141414;
@@ -34,6 +34,38 @@
 			margin: 0;
 			position: absolute;
 		}
+		h2 {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			font-size: 25rem;
+			line-height: .90;
+			letter-spacing: -25px
+		}
+		h2.dropcase {
+			font-size: 35rem;
+			margin-top: -30px;
+			margin-bottom: -120px;
+		}
+		section {
+			text-align: center;
+		}
+		section hr {
+			border: .25em solid #ca001d;
+			height: 34px;
+			box-shadow: 0 0 25rem #ca001d;
+		}
+		section hr.mini {
+			display: inline-block;
+			min-width: 15em;
+			margin-top: 6em;
+		}
+		section hr.mini.left {
+			margin-right: 2em;
+		}
+		section hr.mini.right {
+			margin-left: 2em;
+		}
 	</style>
 </head>
 
@@ -41,6 +73,28 @@
 	<audio id="music">
 		<source src="audio/theme.mp3" type="audio/mpeg">
 	</audio>
+
+	<!-- <section>
+		<hr>
+		<h2 class="dropcase">S</h2>
+		<h2>T</h2>
+		<h2>R</h2>
+		<h2>A</h2>
+		<h2>N</h2>
+		<h2>G</h2>
+		<h2>E</h2>
+		<h2 class="dropcase">R</h2>
+		<br />
+		<hr class="mini left">
+		<h2>T</h2>
+		<h2>H</h2>
+		<h2>I</h2>
+		<h2>N</h2>
+		<h2>G</h2>
+		<h2>S</h2>
+		<hr class="mini right">
+	</section> -->
+
 	<script src="js/anime.min.js"></script>
 	<script type="text/javascript">
 		var music = document.getElementById('music');
