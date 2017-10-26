@@ -88,10 +88,11 @@
 			box-shadow: 0 0 25rem #ca001d;
 			transform-origin: center;
 		    transition-duration: .8s;
-		    transform: scaleX(0);
+		    transform: scale(0, 1);
+		    will-change: transform;
 		}
 		section hr.active {
-			transform: initial;
+			transform: scale(1, 1);
 		}
 		section hr.mini {
 			display: inline-block;
@@ -182,9 +183,12 @@
 			}
 
 			moveLetter('start', 0, 0, 1, 1, 1, 0, 'easeOutQuad', 2000);
+			setTimeout(function() {
+				document.getElementById('start').remove();
+			}, 2000);
 			document.getElementById('music').play();
 			//A - 3000ms
-			setTimeout(function() {createLetter('A', '25%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
+			setTimeout(function() {createLetter('A', '24.5%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
 			// N - 8000ms
 			setTimeout(function() {createLetter('N', '-10%', 0, '185rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 4000, 2500)}, 8500);
 			// RI - 11000ms
@@ -208,7 +212,7 @@
 			setTimeout(function() {
 				var logoWrapper = document.getElementById('logo-wrapper');
 				logoWrapper.className = '';
-				moveLetter('logo-wrapper', 0, 0, 6, .75, 1, 1, 'easeOutQuad', 18500);
+				moveLetter('logo-wrapper', 0, 0, 5, .5, 1, 1, 'easeOutQuad', 25500);
 				moveLetter('a', '-25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
 				moveLetter('n', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
 				moveLetter('g', '50%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
@@ -236,10 +240,10 @@
 					hrRight.className += ' active';
 				}, 600);
 			}, 39800);
-			//Fade out - 39500
+			//Fade out - 45000
 			setTimeout(function() {
 				moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 'easeOutQuad', 5000);
-			}, 39500);
+			}, 45000);
 		}
 	</script>
 </body>
