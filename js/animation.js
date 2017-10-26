@@ -1,19 +1,20 @@
-var start = document.getElementById('start');
-var music = document.getElementById('music');
-var logoWrapper = document.getElementById('logo-wrapper');
-var hr = document.getElementById('border-top');
-var hrLeft = document.getElementById('left');
-var hrRight = document.getElementById('right');
+var start = document.getElementById('start'),
+	intro = document.getElementById('intro'),
+	music = document.getElementById('music'),
+	logoWrapper = document.getElementById('logo-wrapper'),
+	hr = document.getElementById('border-top'),
+	hrLeft = document.getElementById('left'),
+	hrRight = document.getElementById('right');
 
 start.addEventListener("click", function() {
 	playAnimation();
 	setTimeout(function() {
-		start.remove();
+		intro.remove();
 	}, 2000);
 });
 
 function playAnimation() {
-	moveLetter('start', 0, 0, 1, 1, 1, 0, 2000);
+	moveLetter('intro', 0, 0, 1, 1, 1, 0, 2000);
 	music.play();
 	//A - 3000ms
 	setTimeout(function() {createLetter('A', '24.5%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 8550, 5700)}, 2800);
@@ -63,7 +64,7 @@ function playAnimation() {
 			hrLeft.className += ' active';
 			hrRight.className += ' active';
 		}, 600);
-	}, 39800);
+	}, 38800);
 	//Fade out - 45000
 	setTimeout(function() {
 		moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 5000);

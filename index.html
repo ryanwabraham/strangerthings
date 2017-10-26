@@ -14,6 +14,12 @@
 			font-style: normal;
 			font-weight: 700;
 		}
+		@font-face {
+			font-family:'ITCAvantGardeStd-Bold';
+			src:url(http://makeitstranger.com/ITCAvantGardeStd-Bold.eot?#iefix) format("embedded-opentype"), url(http://makeitstranger.com/ITCAvantGardeStd-Bold.svg#4babf15475c6175fdc3437c47fefea04) format("svg");
+			font-style:normal;
+			font-weight:700
+		}
 		* {
 			-webkit-box-sizing: border-box;
 			box-sizing: border-box;
@@ -64,25 +70,43 @@
 			margin-top: -.65rem;
 			margin-bottom: -5rem;
 		}
+		p, a {
+			color: #eaeaea;
+			font-family: 'ITCAvantGardeStd-Bold','Gotham','Proxima Nova',Menlo,Courier;
+		    font-weight: 700;
+			text-transform: uppercase;
+			line-height: 1.4;
+			letter-spacing: 1px;
+		}
 		button {
+			position: relative;
+			margin: 20px;
 			-webkit-appearance: none;
 			background: transparent;
 			border: .015em solid #e50020;
 			outline: none;
 			box-shadow: 0 0 1rem #ca001d;
+		    text-shadow: 0 0 0.5rem #ca001d;
 			font-size: 5rem;
 			padding: 1rem 5rem;
-			z-index: 3;
 			cursor: pointer;
 		}
 		section {
 			text-align: center;
+		}
+		#intro {
+			z-index: 3;
+			-webkit-animation-name: fadeIn;
+	        animation-name: fadeIn;
+	        animation-duration: 2s;
+		}
+		#logo-wrapper {
 			padding: 10rem;
 		}
-		section.hidden {
+		#logo-wrapper.hidden {
 			display: none;
 		}
-		section hr {
+		#logo-wrapper hr {
 			border: .15em solid #e50020;
 			height: .65rem;
 			box-shadow: 0 0 25rem #ca001d;
@@ -91,25 +115,37 @@
 		    transform: scale(0, 1);
 		    will-change: transform;
 		}
-		section hr.active {
+		#logo-wrapper hr.active {
 			transform: scale(1, 1);
 		}
-		section hr.mini {
+		#logo-wrapper hr.mini {
 			display: inline-block;
 			min-width: 8em;
 			margin-top: 3.25em;
 		}
-		section hr#left {
+		#logo-wrapper hr#left {
 			margin-right: 1em;
 		}
-		section hr#right {
+		#logo-wrapper hr#right {
 			margin-left: 1em;
+		}
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
 		}
 	</style>
 </head>
 
 <body>
-	<button id="start">Play</button>
+	<section id="intro">
+		<button id="start">Play</button>
+		<p>This is a Javascript animation experiment by <a href="http://ryanabraham.net">Ryan Abraham</a>.<br />Make sure you have your volume turned up, and enjoy.</p>
+	</section>
 	<main id="main-wrapper">
 		<audio id="music">
 			<source src="audio/theme.mp3" type="audio/mpeg">
