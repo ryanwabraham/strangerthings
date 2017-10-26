@@ -31,17 +31,17 @@
 		}
 		main:after {
 			content: "";
+			position: absolute;
 			background: url(img/grain.png);
 			background-blend-mode: lighten;
-			opacity: 0.2;
+			z-index: 2;
 			top: 0;
 			left: 0;
 			bottom: 0;
 			right: 0;
-			position: absolute;
-			z-index: 2;
+			opacity: 0.2;
 		}
-		h1, h2 {
+		h1, h2, button {
 			font-family: 'BenguiatITCW01-BoldCn', serif;
 		    -webkit-text-stroke: .015em #e50020;
 		    color: #141414;
@@ -63,6 +63,17 @@
 			font-size: 15rem;
 			margin-top: -.65rem;
 			margin-bottom: -5rem;
+		}
+		button {
+			-webkit-appearance: none;
+			background: transparent;
+			border: .015em solid #e50020;
+			outline: none;
+			box-shadow: 0 0 1rem #ca001d;
+			font-size: 5rem;
+			padding: 1rem 5rem;
+			z-index: 3;
+			cursor: pointer;
 		}
 		section {
 			text-align: center;
@@ -97,13 +108,14 @@
 </head>
 
 <body>
+	<button id="start">Play</button>
 	<main id="main-wrapper">
 		<audio id="music">
 			<source src="audio/theme.mp3" type="audio/mpeg">
 		</audio>
 
-		<section id="logo-wrapper" class="">
-			<hr id="border-top" class="active">
+		<section id="logo-wrapper" class="hidden">
+			<hr id="border-top">
 			<h2 id="s" class="dropcase">S</h2>
 			<h2 id="t">T</h2>
 			<h2 id="r">R</h2>
@@ -113,116 +125,122 @@
 			<h2 id="e">E</h2>
 			<h2 id="r2" class="dropcase">R</h2>
 			<br />
-			<hr id="left" class="mini active">
+			<hr id="left" class="mini">
 			<h2 id="t2">T</h2>
 			<h2 id="h">H</h2>
 			<h2 id="i">I</h2>
 			<h2 id="n2">N</h2>
 			<h2 id="g2">G</h2>
 			<h2 id="s2">S</h2>
-			<hr id="right" class="mini active">
+			<hr id="right" class="mini">
 		</section>
 	</main>
 
 	<script src="js/anime.min.js"></script>
 	<script type="text/javascript">
-		// var music = document.getElementById('music');
-		// function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, easing, transitionDuration, deleteAfter) {
-		// 	var el = document.createElement('h1');
-		// 	el.innerHTML = letter;
-		// 	el.style.fontSize = fontSize;
-		// 	el.style.marginLeft = offsetX;
-		// 	el.style.marginTop = offsetY;
+		document.getElementById('start').addEventListener("click", function() {
+			playAnimation();
+		});
 
-		// 	anime({
-		// 		targets: el,
-		// 		translateX: translateX,
-		// 		translateY: translateY,
-		// 		scale: scale,
-		// 		rotate: rotate,
-		// 		opacity: [startingOpacity, opacity],
-		// 		easing: easing,
-		// 		duration: transitionDuration
-		// 	});
-		// 	document.body.appendChild(el);
+		function playAnimation() {
+			function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, easing, transitionDuration, deleteAfter) {
+				var el = document.createElement('h1');
+				el.innerHTML = letter;
+				el.style.fontSize = fontSize;
+				el.style.marginLeft = offsetX;
+				el.style.marginTop = offsetY;
 
-		// 	setTimeout(function() {
-		// 		el.remove();
-		// 	}, deleteAfter);
-		// }
+				anime({
+					targets: el,
+					translateX: translateX,
+					translateY: translateY,
+					scale: scale,
+					rotate: rotate,
+					opacity: [startingOpacity, opacity],
+					easing: easing,
+					duration: transitionDuration
+				});
+				document.body.appendChild(el);
 
-		// function moveLetter(id, offsetX, offsetY, scaleFrom, scaleTo, startingOpacity, opacity, easing, transitionDuration) {
-		// 	var el = document.getElementById(id);
+				setTimeout(function() {
+					el.remove();
+				}, deleteAfter);
+			}
 
-		// 	anime({
-		// 		targets: el,
-		// 		translateX: [offsetX, 0],
-		// 		translateY: [offsetY, 0],
-		// 		scale: [scaleFrom, scaleTo],
-		// 		opacity: [startingOpacity, opacity],
-		// 		easing: easing,
-		// 		duration: transitionDuration
-		// 	});
-		// }
+			function moveLetter(id, offsetX, offsetY, scaleFrom, scaleTo, startingOpacity, opacity, easing, transitionDuration) {
+				var el = document.getElementById(id);
 
-		// music.play();
-		// //A - 3000ms
-		// setTimeout(function() {createLetter('A', '25%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
-		// // N - 8000ms
-		// setTimeout(function() {createLetter('N', '-10%', 0, '185rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 4000, 2500)}, 8500);
-		// // RI - 11000ms
-		// setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
-		// setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
-		// // SG - 14000ms
-		// setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
-		// setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -35, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
-		// //SR - 17000ms
-		// setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 'easeOutQuad', 4200, 2800)}, 17000);
-		// setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 'easeOutQuad', 4200, 2800)}, 17000);
-		// //TART - 19000ms
-		// setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
-		// setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
-		// setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
-		// setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
-		// //NG - 21000ms
-		// setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 'easeOutQuad', 6750, 4500)}, 21000);
-		// setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 'easeOutQuad', 6750, 4500)}, 21000);
-		// //All letters - 25500ms
-		// setTimeout(function() {
-		// 	var logoWrapper = document.getElementById('logo-wrapper');
-		// 	logoWrapper.className = '';
-		// 	moveLetter('logo-wrapper', 0, 0, 6, .75, 1, 1, 'easeOutQuad', 18500);
-		// 	moveLetter('a', '-25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('n', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('g', '50%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('i', '-35%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('g2', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('r', '-75%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('n2', 0, '100%', 1, 1, 1, 1, 'easeOutQuad', 8000);
-		// 	moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('t', 0, '-150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('h', 0, '200%', 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('s2', 0, '150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('e', 0, '-125%', 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('s', '-300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// 	moveLetter('r2', '300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
-		// }, 25500);
-		// //Show hrs - 39800ms
-		// setTimeout(function() {
-		// 	var hr = document.getElementById('border-top');
-		// 	hr.className += 'active';
+				anime({
+					targets: el,
+					translateX: [offsetX, 0],
+					translateY: [offsetY, 0],
+					scale: [scaleFrom, scaleTo],
+					opacity: [startingOpacity, opacity],
+					easing: easing,
+					duration: transitionDuration
+				});
+			}
 
-		// 	setTimeout(function() {
-		// 		var hrLeft = document.getElementById('left');
-		// 		var hrRight = document.getElementById('right');
-		// 		hrLeft.className += ' active';
-		// 		hrRight.className += ' active';
-		// 	}, 600);
-		// }, 39800);
-		// //Fade out - 39500
-		// setTimeout(function() {
-		// 	moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 'easeOutQuad', 5000);
-		// }, 39500);
+			moveLetter('start', 0, 0, 1, 1, 1, 0, 'easeOutQuad', 2000);
+			document.getElementById('music').play();
+			//A - 3000ms
+			setTimeout(function() {createLetter('A', '25%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 'easeOutQuad', 8550, 5700)}, 2800);
+			// N - 8000ms
+			setTimeout(function() {createLetter('N', '-10%', 0, '185rem', 0, 300, .90, 0, 1, 1, 'easeOutQuad', 4000, 2500)}, 8500);
+			// RI - 11000ms
+			setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
+			setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 'easeOutQuad', 4500, 3000)}, 11000);
+			// SG - 14000ms
+			setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
+			setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -35, 1, 1, 'easeOutQuad', 5500, 3000)}, 14000);
+			//SR - 17000ms
+			setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 'easeOutQuad', 4200, 2800)}, 17000);
+			setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 'easeOutQuad', 4200, 2800)}, 17000);
+			//TART - 19000ms
+			setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
+			setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
+			setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
+			setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 'easeOutQuad', 8000, 6000)}, 19800);
+			//NG - 21000ms
+			setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 'easeOutQuad', 6750, 4500)}, 21000);
+			setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 'easeOutQuad', 6750, 4500)}, 21000);
+			//All letters - 25500ms
+			setTimeout(function() {
+				var logoWrapper = document.getElementById('logo-wrapper');
+				logoWrapper.className = '';
+				moveLetter('logo-wrapper', 0, 0, 6, .75, 1, 1, 'easeOutQuad', 18500);
+				moveLetter('a', '-25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('n', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('g', '50%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('i', '-35%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('g2', '25%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('r', '-75%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('n2', 0, '100%', 1, 1, 1, 1, 'easeOutQuad', 8000);
+				moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('t', 0, '-150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('h', 0, '200%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('s2', 0, '150%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('e', 0, '-125%', 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('s', '-300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+				moveLetter('r2', '300%', 0, 1, 1, 1, 1, 'easeOutQuad', 12000);
+			}, 25500);
+			//Show hrs - 39800ms
+			setTimeout(function() {
+				var hr = document.getElementById('border-top');
+				hr.className += 'active';
+
+				setTimeout(function() {
+					var hrLeft = document.getElementById('left');
+					var hrRight = document.getElementById('right');
+					hrLeft.className += ' active';
+					hrRight.className += ' active';
+				}, 600);
+			}, 39800);
+			//Fade out - 39500
+			setTimeout(function() {
+				moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 'easeOutQuad', 5000);
+			}, 39500);
+		}
 	</script>
 </body>
 </html>
