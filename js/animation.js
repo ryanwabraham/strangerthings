@@ -63,7 +63,7 @@ function playAnimation() {
 			hrLeft.className += ' active';
 			hrRight.className += ' active';
 		}, 600);
-	}, 13300);
+	}, 38800);
 	//Fade out - 45000
 	setTimeout(function() {
 		moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 5000);
