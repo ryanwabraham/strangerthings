@@ -39,24 +39,23 @@ function playAnimation() {
 	setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
 	//All letters - 25500ms
 	setTimeout(function() {
-		logoWrapper.className = '';
-		moveLetter('logo-wrapper', 0, 0, 5, .5, 1, 1, 25500);
-		moveLetter('a', '-25%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('n', '25%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('g', '50%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('i', '-35%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('g2', '25%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('r', '-75%', 0, 1, 1, 1, 1, 12000);
+		logoWrapper.className = 'scale-down';
+		moveLetter('a', '-25%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('n', '25%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('g', '50%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('i', '-35%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('g2', '25%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('r', '-75%', 0, 1, 1, 1, 1, 11000);
 		moveLetter('n2', 0, '100%', 1, 1, 1, 1, 8000);
-		moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('t', 0, '-150%', 1, 1, 1, 1, 12000);
-		moveLetter('h', 0, '200%', 1, 1, 1, 1, 12000);
-		moveLetter('s2', 0, '150%', 1, 1, 1, 1, 12000);
-		moveLetter('e', 0, '-125%', 1, 1, 1, 1, 12000);
-		moveLetter('s', '-300%', 0, 1, 1, 1, 1, 12000);
-		moveLetter('r2', '300%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('t', 0, '-150%', 1, 1, 1, 1, 11000);
+		moveLetter('h', 0, '200%', 1, 1, 1, 1, 11000);
+		moveLetter('s2', 0, '150%', 1, 1, 1, 1, 11000);
+		moveLetter('e', 0, '-125%', 1, 1, 1, 1, 11000);
+		moveLetter('s', '-300%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('r2', '300%', 0, 1, 1, 1, 1, 11000);
 	}, 25500);
-	//Show hrs - 39800ms
+	//Show hrs - 38800ms
 	setTimeout(function() {
 		hr.className += 'active';
 
@@ -64,7 +63,7 @@ function playAnimation() {
 			hrLeft.className += ' active';
 			hrRight.className += ' active';
 		}, 600);
-	}, 38800);
+	}, 13300);
 	//Fade out - 45000
 	setTimeout(function() {
 		moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 5000);

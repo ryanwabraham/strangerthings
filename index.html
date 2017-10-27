@@ -96,12 +96,17 @@
 		}
 		#intro {
 			z-index: 3;
-			-webkit-animation-name: fadeIn;
 	        animation-name: fadeIn;
 	        animation-duration: 2s;
 		}
 		#logo-wrapper {
 			padding: 10rem;
+		}
+		#logo-wrapper.scale-down {
+			padding: 10rem;
+			animation-name: scaleDown;
+	        animation-duration: 25.5s;
+			will-change: transform;
 		}
 		#logo-wrapper.hidden {
 			display: none;
@@ -113,7 +118,6 @@
 			transform-origin: center;
 		    transition-duration: .8s;
 		    transform: scale(0, 1);
-		    will-change: transform;
 		}
 		#logo-wrapper hr.active {
 			transform: scale(1, 1);
@@ -136,6 +140,15 @@
 
 			to {
 				opacity: 1;
+			}
+		}
+		@keyframes scaleDown {
+			from {
+				transform: scale(5, 5);
+			}
+
+			to {
+				transform: scale(.5, .5);
 			}
 		}
 	</style>
