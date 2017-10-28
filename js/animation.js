@@ -40,20 +40,20 @@ function playAnimation() {
 	//All letters - 25500ms
 	setTimeout(function() {
 		logoWrapper.className = 'scale-down';
-		moveLetter('a', '-25%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('n', '25%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('g', '50%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('i', '-35%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('g2', '25%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('r', '-75%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('a', '-25%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('n', '25%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('g', '50%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('i', '-35%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('g2', '25%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('r', '-75%', 0, 1, 1, 1, 1, 12000);
 		moveLetter('n2', 0, '100%', 1, 1, 1, 1, 8000);
-		moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('t', 0, '-150%', 1, 1, 1, 1, 11000);
-		moveLetter('h', 0, '200%', 1, 1, 1, 1, 11000);
-		moveLetter('s2', 0, '150%', 1, 1, 1, 1, 11000);
-		moveLetter('e', 0, '-125%', 1, 1, 1, 1, 11000);
-		moveLetter('s', '-300%', 0, 1, 1, 1, 1, 11000);
-		moveLetter('r2', '300%', 0, 1, 1, 1, 1, 11000);
+		moveLetter('t2', '-100%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('t', 0, '-150%', 1, 1, 1, 1, 12000);
+		moveLetter('h', 0, '200%', 1, 1, 1, 1, 12000);
+		moveLetter('s2', 0, '150%', 1, 1, 1, 1, 12000);
+		moveLetter('e', 0, '-125%', 1, 1, 1, 1, 12000);
+		moveLetter('s', '-300%', 0, 1, 1, 1, 1, 12000);
+		moveLetter('r2', '300%', 0, 1, 1, 1, 1, 12000);
 	}, 25500);
 	//Show hrs - 38800ms
 	setTimeout(function() {
@@ -62,8 +62,8 @@ function playAnimation() {
 		setTimeout(function() {
 			hrLeft.className += ' active';
 			hrRight.className += ' active';
-		}, 600);
-	}, 38800);
+		}, 700);
+	}, 39800);
 	//Fade out - 45000
 	setTimeout(function() {
 		moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 5000);
