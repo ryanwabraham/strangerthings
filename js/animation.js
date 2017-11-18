@@ -1,6 +1,8 @@
 var start = document.getElementById('start'),
 	intro = document.getElementById('intro'),
+	introText = document.querySelector('#intro p'),
 	music = document.getElementById('music'),
+	mainWrapper = document.getElementById('main-wrapper');
 	logoWrapper = document.getElementById('logo-wrapper'),
 	hr = document.getElementById('border-top'),
 	hrLeft = document.getElementById('left'),
@@ -9,7 +11,8 @@ var start = document.getElementById('start'),
 start.addEventListener("click", function() {
 	playAnimation();
 	setTimeout(function() {
-		intro.remove();
+		intro.style.display = 'none';
+		mainWrapper.style.display = 'none';
 	}, 2000);
 });
 
@@ -39,6 +42,7 @@ function playAnimation() {
 	setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
 	//All letters - 25500ms
 	setTimeout(function() {
+		mainWrapper.style.display = 'block';
 		logoWrapper.className = 'scale-down';
 		moveLetter('a', '-25%', 0, 1, 1, 1, 1, 12000);
 		moveLetter('n', '25%', 0, 1, 1, 1, 1, 12000);
@@ -68,6 +72,14 @@ function playAnimation() {
 	setTimeout(function() {
 		moveLetter('main-wrapper', 0, 0, 1, 1, 1, 0, 5000);
 	}, 45000);
+	//Bring back the intro - 51000
+	setTimeout(function() {
+		mainWrapper.style.display = 'none';
+		intro.style.display = 'block';
+		start.innerText = 'Play Again';
+		introText.innerHTML = 'Created by <a href="http://ryanabraham.net">Ryan Abraham</a>.<br />See the code on <a href="https://github.com/ryanwabraham/strangerthings">Github</a>.';
+		moveLetter('intro', 0, 0, 1, 1, 1, 1, 2000);
+	}, 51000);
 
 	function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, transitionDuration, deleteAfter) {
 		var el = document.createElement('h1');
