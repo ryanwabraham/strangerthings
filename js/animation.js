@@ -76,7 +76,6 @@ function playAnimation() {
 	setTimeout(function() {
 		mainWrapper.style.display = 'none';
 		intro.style.display = 'block';
-		start.innerText = 'Play Again';
 		introText.innerHTML = 'Created by <a href="http://ryanabraham.net">Ryan Abraham</a>.<br />See the code on <a href="https://github.com/ryanwabraham/strangerthings">Github</a>.';
 		moveLetter('intro', 0, 0, 1, 1, 1, 1, 2000);
 		resetState();
