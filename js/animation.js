@@ -20,26 +20,26 @@ function playAnimation() {
 	moveLetter('intro', 0, 0, 1, 1, 1, 0, 2000);
 	music.play();
 	//A - 3000ms
-	setTimeout(function() {createLetter('A', '24.5%', '30%', '800rem', 0, 0, .75, 0, 1, 1, 8550, 5700)}, 2800);
+	setTimeout(function() {createLetter('A', '24.5%', '30%', '800vw', 0, 0, .75, 0, 1, 1, 8550, 5700)}, 2800);
 	// N - 8000ms
-	setTimeout(function() {createLetter('N', '-10%', 0, '185rem', 0, 300, .90, 0, 1, 1, 4000, 2500)}, 8500);
+	setTimeout(function() {createLetter('N', '-10%', 0, '185vw', 0, 300, .90, 0, 1, 1, 4000, 2500)}, 8500);
 	// RI - 11000ms
-	setTimeout(function() {createLetter('R', '-50%', '26%', '175rem', -200, 300, .95, 0, 1, 1, 4500, 3000)}, 11000);
-	setTimeout(function() {createLetter('I', '50%', '-20%', '175rem', 200, 300, .95, 0, 1, 1, 4500, 3000)}, 11000);
+	setTimeout(function() {createLetter('R', '-50%', '26%', '175vw', -200, 300, .95, 0, 1, 1, 4500, 3000)}, 11000);
+	setTimeout(function() {createLetter('I', '50%', '-20%', '175vw', 200, 300, .95, 0, 1, 1, 4500, 3000)}, 11000);
 	// SG - 14000ms
-	setTimeout(function() {createLetter('S', '10%', '50%', '120rem', -20, -30, .90, -15, 1, 1, 5500, 3000)}, 14000);
-	setTimeout(function() {createLetter('G', '10%', '-55%', '120rem', 5, -15, .90, -35, 1, 1, 5500, 3000)}, 14000);
+	setTimeout(function() {createLetter('S', '10%', '50%', '120vw', -20, -30, .90, -15, 1, 1, 5500, 3000)}, 14000);
+	setTimeout(function() {createLetter('G', '10%', '-55%', '120vw', 5, -15, .90, -35, 1, 1, 5500, 3000)}, 14000);
 	//SR - 17000ms
-	setTimeout(function() {createLetter('S', '20%', '40%', '150rem', -75, -150, .90, 0, 1, 1, 4200, 2800)}, 17000);
-	setTimeout(function() {createLetter('R', '-85%', '15%', '150rem', 100, -75, .90, 0, 1, 1, 4200, 2800)}, 17000);
+	setTimeout(function() {createLetter('S', '20%', '40%', '150vw', -75, -150, .90, 0, 1, 1, 4200, 2800)}, 17000);
+	setTimeout(function() {createLetter('R', '-85%', '15%', '150vw', 100, -75, .90, 0, 1, 1, 4200, 2800)}, 17000);
 	//TART - 19000ms
-	setTimeout(function() {createLetter('T', '-25%', '-55%', '100rem', -150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
-	setTimeout(function() {createLetter('A', '60%', '-55%', '100rem', 150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
-	setTimeout(function() {createLetter('R', '60%', '45%', '100rem', -150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
-	setTimeout(function() {createLetter('T', '-40%', '45%', '100rem', 150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
+	setTimeout(function() {createLetter('T', '-25%', '-55%', '100vw', -150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
+	setTimeout(function() {createLetter('A', '60%', '-55%', '100vw', 150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
+	setTimeout(function() {createLetter('R', '60%', '45%', '100vw', -150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
+	setTimeout(function() {createLetter('T', '-40%', '45%', '100vw', 150, 80, 1, 0, 1, 0, 8000, 6000)}, 19800);
 	//NG - 21000ms
-	setTimeout(function() {createLetter('N', '-25%', 0, '30rem', 150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
-	setTimeout(function() {createLetter('G', '25%', 0, '30rem', -150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
+	setTimeout(function() {createLetter('N', '-25%', 0, '30vw', 150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
+	setTimeout(function() {createLetter('G', '25%', 0, '30vw', -150, 0, 1, 0, 0, 1, 6750, 4500)}, 21000);
 	//All letters - 25500ms
 	setTimeout(function() {
 		mainWrapper.style.display = 'block';
