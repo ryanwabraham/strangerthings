@@ -1,22 +1,54 @@
-var start = document.getElementById('start'),
-    intro = document.getElementById('intro'),
-    introText = document.querySelector('#intro p'),
-    music = document.getElementById('music'),
-    mainWrapper = document.getElementById('main-wrapper'),
-    logoWrapper = document.getElementById('logo-wrapper'),
-    hr = document.getElementById('border-top'),
-    hrLeft = document.getElementById('left'),
-    hrRight = document.getElementById('right');
+const start = document.getElementById('start');
+const intro = document.getElementById('intro');
+const introText = document.querySelector('#intro p');
+const music = document.getElementById('music');
+const mainWrapper = document.getElementById('main-wrapper');
+const logoWrapper = document.getElementById('logo-wrapper');
+const hr = document.getElementById('border-top');
+const hrLeft = document.getElementById('left');
+const hrRight = document.getElementById('right');
 
-start.addEventListener("click", function() {
-    playMainAnimation();
+//
+// functions
+//
+
+function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, transitionDuration, deleteAfter) {
+    var el = document.createElement('h1');
+    el.innerHTML = letter;
+    el.style.fontSize = fontSize;
+    el.style.marginLeft = offsetX;
+    el.style.marginTop = offsetY;
+
+    anime({
+        targets: el,
+        translateX: translateX,
+        translateY: translateY,
+        scale: scale,
+        rotate: rotate,
+        opacity: [startingOpacity, opacity],
+        easing: 'easeOutQuad',
+        duration: transitionDuration
+    });
+
+    document.body.appendChild(el);
     setTimeout(function() {
-        intro.style.display = 'none';
-        mainWrapper.style.display = 'none';
-    }, 2000);
-});
+        el.remove();
+    }, deleteAfter);
+}
 
-function playMainAnimation() {
+function moveLetter(id, offsetX, offsetY, scaleFrom, scaleTo, startingOpacity, opacity, transitionDuration) {
+    anime({
+        targets: document.getElementById(id),
+        translateX: [offsetX, 0],
+        translateY: [offsetY, 0],
+        scale: [scaleFrom, scaleTo],
+        opacity: [startingOpacity, opacity],
+        easing: 'easeOutQuad',
+        duration: transitionDuration
+    });
+}
+
+function playTitleSequence() {
     // Fade out intro screen
     moveLetter('intro', 0, 0, 1, 1, 1, 0, 2000);
     music.play();
@@ -83,42 +115,6 @@ function playMainAnimation() {
     }, 51000);
 }
 
-function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, transitionDuration, deleteAfter) {
-    var el = document.createElement('h1');
-    el.innerHTML = letter;
-    el.style.fontSize = fontSize;
-    el.style.marginLeft = offsetX;
-    el.style.marginTop = offsetY;
-
-    anime({
-        targets: el,
-        translateX: translateX,
-        translateY: translateY,
-        scale: scale,
-        rotate: rotate,
-        opacity: [startingOpacity, opacity],
-        easing: 'easeOutQuad',
-        duration: transitionDuration
-    });
-
-    document.body.appendChild(el);
-    setTimeout(function() {
-        el.remove();
-    }, deleteAfter);
-}
-
-function moveLetter(id, offsetX, offsetY, scaleFrom, scaleTo, startingOpacity, opacity, transitionDuration) {
-    anime({
-        targets: document.getElementById(id),
-        translateX: [offsetX, 0],
-        translateY: [offsetY, 0],
-        scale: [scaleFrom, scaleTo],
-        opacity: [startingOpacity, opacity],
-        easing: 'easeOutQuad',
-        duration: transitionDuration
-    });
-}
-
 function resetState() {
     logoWrapper.className = '';
     logoWrapper.removeAttribute('style');
@@ -128,3 +124,15 @@ function resetState() {
     hrLeft.classList.remove('active');
     hrRight.classList.remove('active');
 }
+
+//
+// event listeners
+//
+
+start.addEventListener("click", function() {
+    playTitleSequence();
+    setTimeout(function() {
+        intro.style.display = 'none';
+        mainWrapper.style.display = 'none';
+    }, 2000);
+});
