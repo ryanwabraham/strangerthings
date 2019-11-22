@@ -12,28 +12,28 @@ const hrRight = document.getElementById('right');
 // functions
 //
 
-function createLetter(letter, offsetX, offsetY, fontSize, translateX, translateY, scale, rotate, startingOpacity, opacity, transitionDuration, deleteAfter) {
+function createLetter(letter) {
     const el = document.createElement('h1');
-    el.innerHTML = letter;
-    el.style.fontSize = fontSize;
-    el.style.marginLeft = offsetX;
-    el.style.marginTop = offsetY;
+    el.innerHTML = letter.letter;
+    el.style.fontSize = letter.fontSize;
+    el.style.marginLeft = letter.offsetX;
+    el.style.marginTop = letter.offsetY;
 
     anime({
         targets: el,
-        translateX: translateX,
-        translateY: translateY,
-        scale: scale,
-        rotate: rotate,
-        opacity: [startingOpacity, opacity],
+        translateX: letter.translateX,
+        translateY: letter.translateY,
+        scale: letter.scale,
+        rotate: letter.rotate,
+        opacity: [letter.startingOpacity, letter.opacity],
         easing: 'easeOutQuad',
-        duration: transitionDuration
+        duration: letter.transitionDuration
     });
 
     document.body.appendChild(el);
     setTimeout(() => {
         el.remove();
-    }, deleteAfter);
+    }, letter.deleteAfter);
 }
 
 function moveLetter(letter) {
@@ -53,26 +53,26 @@ function playTitleSequence() {
     moveLetter({id: 'intro', offsetX: 0, offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1,opacity: 0, transitionDuration: 2000});
     music.play();
     // A - 3000ms
-    setTimeout(() => {createLetter('A', '24.5%', '30%', '800vw', 0, 0, 0.75, 0, 1, 1, 8550, 5700);}, 2800);
+    setTimeout(() => {createLetter({letter: 'A', offsetX: '24.5%', offsetY: '30%', fontSize: '800vw', translateX: 0, translateY: 0, scale: 0.75, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 8550, deleteAfter: 5700});}, 2800);
     // N - 8000ms
-    setTimeout(() => {createLetter('N', '-10%', 0, '185vw', 0, 300, 0.90, 0, 1, 1, 4000, 2500);}, 8500);
+    setTimeout(() => {createLetter({letter: 'N', offsetX: '-10%', offsetY: 0, fontSize: '185vw', translateX: 0, translateY: 300, scale: 0.90, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 4000, deleteAfter: 2500});}, 8500);
     // RI - 11000ms
-    setTimeout(() => {createLetter('R', '-50%', '26%', '175vw', -200, 300, 0.95, 0, 1, 1, 4500, 3000);}, 11000);
-    setTimeout(() => {createLetter('I', '50%', '-20%', '175vw', 200, 300, 0.95, 0, 1, 1, 4500, 3000);}, 11000);
+    setTimeout(() => {createLetter({letter: 'R', offsetX: '-50%', offsetY: '26%', fontSize: '175vw', translateX: -200, translateY: 300, scale: 0.95, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 4500, deleteAfter: 3000});}, 11000);
+    setTimeout(() => {createLetter({letter: 'I', offsetX: '50%', offsetY: '-20%', fontSize: '175vw', translateX: 200, translateY: 300, scale: 0.95, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 4500, deleteAfter: 3000});}, 11000);
     // SG - 14000ms
-    setTimeout(() => {createLetter('S', '10%', '50%', '120vw', -20, -30, 0.90, -15, 1, 1, 5500, 3000);}, 14000);
-    setTimeout(() => {createLetter('G', '10%', '-55%', '120vw', 5, -15, 0.90, -35, 1, 1, 5500, 3000);}, 14000);
+    setTimeout(() => {createLetter({letter: 'S', offsetX: '10%', offsetY: '50%', fontSize: '120vw', translateX: -20, translateY: -30, scale: 0.90, rotate: -15, startingOpacity: 1, opacity: 1, transitionDuration: 5500, deleteAfter: 3000});}, 14000);
+    setTimeout(() => {createLetter({letter: 'G', offsetX: '10%', offsetY: '-55%', fontSize: '120vw', translateX: 5, translateY: -15, scale: 0.90, rotate: -35, startingOpacity: 1, opacity: 1, transitionDuration: 5500, deleteAfter: 3000});}, 14000);
     // SR - 17000ms
-    setTimeout(() => {createLetter('S', '20%', '40%', '150vw', -75, -150, 0.90, 0, 1, 1, 4200, 2800);}, 17000);
-    setTimeout(() => {createLetter('R', '-85%', '15%', '150vw', 100, -75, 0.90, 0, 1, 1, 4200, 2800);}, 17000);
+    setTimeout(() => {createLetter({letter: 'S', offsetX: '20%', offsetY: '40%', fontSize: '150vw', translateX: -75, translateY: -150, scale: 0.90, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 4200, deleteAfter: 2800});}, 17000);
+    setTimeout(() => {createLetter({letter: 'R', offsetX: '-85%', offsetY: '15%', fontSize: '150vw', translateX: 100, translateY: -75, scale: 0.90, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 4200, deleteAfter: 2800});}, 17000);
     // TART - 19000ms
-    setTimeout(() => {createLetter('T', '-25%', '-55%', '100vw', -150, 80, 1, 0, 1, 0, 8000, 6000);}, 19800);
-    setTimeout(() => {createLetter('A', '60%', '-55%', '100vw', 150, 80, 1, 0, 1, 0, 8000, 6000);}, 19800);
-    setTimeout(() => {createLetter('R', '60%', '45%', '100vw', -150, 80, 1, 0, 1, 0, 8000, 6000);}, 19800);
-    setTimeout(() => {createLetter('T', '-40%', '45%', '100vw', 150, 80, 1, 0, 1, 0, 8000, 6000);}, 19800);
+    setTimeout(() => {createLetter({letter: 'T', offsetX: '-25%', offsetY: '-55%', fontSize: '100vw', translateX: -150, translateY: 80, scale: 1, rotate: 0, startingOpacity: 1, opacity: 0, transitionDuration: 8000, deleteAfter: 6000});}, 19800);
+    setTimeout(() => {createLetter({letter: 'A', offsetX: '60%', offsetY: '-55%', fontSize: '100vw', translateX: 150, translateY: 80, scale: 1, rotate: 0, startingOpacity: 1, opacity: 0, transitionDuration: 8000, deleteAfter: 6000});}, 19800);
+    setTimeout(() => {createLetter({letter: 'R', offsetX: '60%', offsetY: '45%', fontSize: '100vw', translateX: -150, translateY: 80, scale: 1, rotate: 0, startingOpacity: 1, opacity: 0, transitionDuration: 8000, deleteAfter: 6000});}, 19800);
+    setTimeout(() => {createLetter({letter: 'T', offsetX: '-40%', offsetY: '45%', fontSize: '100vw', translateX: 150, translateY: 80, scale: 1, rotate: 0, startingOpacity: 1, opacity: 0, transitionDuration: 8000, deleteAfter: 6000});}, 19800);
     // NG - 21000ms
-    setTimeout(() => {createLetter('N', '-25%', 0, '30vw', 150, 0, 1, 0, 0, 1, 6750, 4500);}, 21000);
-    setTimeout(() => {createLetter('G', '25%', 0, '30vw', -150, 0, 1, 0, 0, 1, 6750, 4500);}, 21000);
+    setTimeout(() => {createLetter({letter: 'N', offsetX: '-25%', offsetY: 0, fontSize: '30vw', translateX: 150, translateY: 0, scale: 1, rotate: 0, startingOpacity: 0, opacity: 1, transitionDuration: 6750, deleteAfter: 4500});}, 21000);
+    setTimeout(() => {createLetter({letter: 'G', offsetX: '25%', offsetY: 0, fontSize: '30vw', translateX: -150, translateY: 0, scale: 1, rotate: 0, startingOpacity: 0, opacity: 1, transitionDuration: 6750, deleteAfter: 4500});}, 21000);
     // All letters - 25500ms
     setTimeout(() => {
         mainWrapper.style.display = 'block';
