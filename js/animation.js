@@ -13,12 +13,13 @@ const hrRight = document.getElementById('right');
 //
 
 function createLetter(letter) {
+    // create the letter
     const el = document.createElement('h1');
     el.innerHTML = letter.letter;
     el.style.fontSize = letter.fontSize;
     el.style.marginLeft = letter.offsetX;
     el.style.marginTop = letter.offsetY;
-
+    // animate the letter
     anime({
         targets: el,
         translateX: letter.translateX,
@@ -29,14 +30,15 @@ function createLetter(letter) {
         easing: 'easeOutQuad',
         duration: letter.transitionDuration
     });
-
     document.body.appendChild(el);
+    // delete the letter
     setTimeout(() => {
         el.remove();
     }, letter.deleteAfter);
 }
 
 function moveLetter(letter) {
+    // move an existing letter
     anime({
         targets: document.getElementById(letter.id),
         translateX: [letter.offsetX, 0],
@@ -49,8 +51,11 @@ function moveLetter(letter) {
 }
 
 function playTitleSequence() {
-    // Fade out intro screen
+    // fade out intro
     moveLetter({id: 'intro', offsetX: 0, offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1,opacity: 0, transitionDuration: 2000});
+    // hide intro
+    setTimeout(() => {intro.style.display = 'none'; mainWrapper.style.display = 'none';}, 2000);
+    // queue the music...
     music.play();
     // A - 3000ms
     setTimeout(() => {createLetter({letter: 'A', offsetX: '24.5%', offsetY: '30%', fontSize: '800vw', translateX: 0, translateY: 0, scale: 0.75, rotate: 0, startingOpacity: 1, opacity: 1, transitionDuration: 8550, deleteAfter: 5700});}, 2800);
@@ -73,7 +78,7 @@ function playTitleSequence() {
     // NG - 21000ms
     setTimeout(() => {createLetter({letter: 'N', offsetX: '-25%', offsetY: 0, fontSize: '30vw', translateX: 150, translateY: 0, scale: 1, rotate: 0, startingOpacity: 0, opacity: 1, transitionDuration: 6750, deleteAfter: 4500});}, 21000);
     setTimeout(() => {createLetter({letter: 'G', offsetX: '25%', offsetY: 0, fontSize: '30vw', translateX: -150, translateY: 0, scale: 1, rotate: 0, startingOpacity: 0, opacity: 1, transitionDuration: 6750, deleteAfter: 4500});}, 21000);
-    // All letters - 25500ms
+    // all letters - 25500ms
     setTimeout(() => {
         mainWrapper.style.display = 'block';
         logoWrapper.className = 'scale-down';
@@ -92,7 +97,7 @@ function playTitleSequence() {
         moveLetter({id: 's', offsetX: '-300%', offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1, opacity: 1, transitionDuration: 12000});
         moveLetter({id: 'r2', offsetX: '300%', offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1, opacity: 1, transitionDuration: 12000});
     }, 25500);
-    // Show horizontal rules - 38800ms
+    // show horizontal rules - 38800ms
     setTimeout(() => {
         hr.className += 'active';
 
@@ -101,11 +106,9 @@ function playTitleSequence() {
             hrRight.className += ' active';
         }, 700);
     }, 39800);
-    // Fade out - 45000
-    setTimeout(() => {
-        moveLetter({id: 'main-wrapper', offsetX: 0, offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1, opacity: 0, transitionDuration: 5000});
-    }, 45000);
-    // Bring back the intro - 51000
+    // fade out all letters - 45000
+    setTimeout(() => {moveLetter({id: 'main-wrapper', offsetX: 0, offsetY: 0, scaleFrom: 1, scaleTo: 1, startingOpacity: 1, opacity: 0, transitionDuration: 5000});}, 45000);
+    // bring the intro back - 51000
     setTimeout(() => {
         mainWrapper.style.display = 'none';
         intro.style.display = 'block';
@@ -134,8 +137,4 @@ function resetState() {
 
 start.addEventListener("click", function() {
     playTitleSequence();
-    setTimeout(() => {
-        intro.style.display = 'none';
-        mainWrapper.style.display = 'none';
-    }, 2000);
 });
