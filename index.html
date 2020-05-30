@@ -1,5 +1,4 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -54,6 +53,8 @@
             font-size: 125vw;
             margin: 0;
             position: absolute;
+            will-change: transform;
+            paint-order: fill;
         }
         h2 {
             position: relative;
@@ -162,7 +163,11 @@
 <body>
     <section id="intro">
         <button id="start">Play</button>
-        <p>Stranger Things Intro - a javascript animation experiment.<br />Make sure you have your volume turned up, and enjoy.</p>
+        <p>
+            Stranger Things Intro - a javascript animation experiment.
+            <br />
+            Make sure you have your volume turned up, and enjoy.
+        </p>
     </section>
     <main id="main-wrapper">
         <audio id="music" preload="auto">
